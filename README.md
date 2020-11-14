@@ -1,4 +1,4 @@
-# A Seed-and-Extend aligner in Python
+# Fehrest: A Seed-and-Extend aligner in Python
 
 Index-assisted alignment of NGS reads to a reference genome is one of my favorite problems in computational biology. While this problem has already been studied at great length, this aligner is a pet project for me to become more familiar with writing high-performance code in python.
 

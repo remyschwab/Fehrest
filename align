@@ -1,0 +1,72 @@
+#!/Users/remy/Applications/PyCharmProjects/SAE/venv/bin/python
+
+import argparse
+import pickle
+from collections import defaultdict
+from index import InvertedIndex
+
+
+def align(p, d, idx):
+    offsets = defaultdict(list)
+    seeds = set()
+    # Seed
+    # For each partition
+    for i in range(0, d + 1):
+        # Employ PHP strategy
+        shift = i * inverted_index.k
+        kmer = p[shift:shift + inverted_index.k]
+        # For each contig of genome
+        for contig in inverted_index.index:
+            anchors = inverted_index.query(kmer, contig)
+            if anchors:
+                for anchor in anchors:
+                    if anchor-shift >= 0:
+                        seeds.add((contig, anchor-shift))
+    # Extend
+    for seed in seeds:
+        hit = idx.ref.fetch(seed[0], seed[1], seed[1]+len(p))
+        # Don't perform alignment if hit falls off the end of the genome
+        if len(hit) < len(p):
+            continue
+        hamming_distance = [a != b for (a, b) in zip(p, hit)].count(True)
+        if hamming_distance <= d and (seed, hamming_distance) not in offsets[contig]:
+            offsets[contig].append((seed[1], hamming_distance))
+    return offsets
+
+
+def summarize_alignments(offsets):
+    counts = {0: [], 1: [], 2: [], 3: [], 4: []}
+    for contig in offsets:
+        matches = offsets[contig]
+        for match in matches:
+            if match[1] == 0:
+                counts[0].append(match[0])
+            elif match[1] == 1:
+                counts[1].append(match[0])
+            elif match[1] == 2:
+                counts[2].append(match[0])
+            elif match[1] == 3:
+                counts[3].append(match[0])
+            elif match[1] == 4:
+                counts[4].append(match[0])
+    print(counts)
+
+
+if __name__ == "__main__":
+    # Parse command
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-x", "--index", required=True, help="The path to your index file")
+    parser.add_argument("-p", "--pattern", required=True, help="Pattern you're looking for")
+    args = parser.parse_args()
+
+    # Prepare index
+    index_dump = pickle.load(open(args.index, 'rb'))
+    inverted_index = InvertedIndex(index_dump[2], index_dump[0])
+    inverted_index.index = index_dump[1]
+
+    # Perform alignment
+    # Sample human patterns to search for
+    # p1 = "TGGATGTGAAATGAGTCAAG"
+    # p2 = "GGGTGGGGGGAGTTTGCTCC"
+    alignments = align(args.pattern, 4, inverted_index)
+    summarize_alignments(alignments)
