@@ -1,0 +1,105 @@
+TGATTTGGTTGGACTTGGTGGCAAGTCTGCCGCTGATAAAGGAAAGGATACTCGTGATTATCTTGCTGCTGCATTTCCTGAGCTTAATGCTTGGGCTCGTGCTGGTGCTGATGGTTCGTTGGATGGTATGGGTGCTGCCGGTGTGGTGAT 30
+Part Seq: TGATTTGGTTGGACTTGGTGGCAAGTCTGC
+Hit Array: [0]
+Individual index positions, number mismatches:
+0: 0
+Part Seq: CGCTGATAAAGGAAAGGATACTCGTGATTA
+Hit Array: [30, 180, 330, 480, 630, 780]
+Individual index positions, number mismatches:
+0: 0
+300: 4
+450: 3
+600: 2
+750: 1
+Part Seq: TCTTGCTGCTGCATTTCCTGAGCTTAATGC
+Hit Array: [60, 210, 360, 510, 660, 810]
+Individual index positions, number mismatches:
+0: 0
+300: 4
+450: 3
+600: 2
+750: 1
+Part Seq: TTGGGCTCGTGCTGGTGCTGATGGTTCGTT
+Hit Array: [90, 240, 390, 540, 690, 840]
+Individual index positions, number mismatches:
+0: 0
+300: 4
+450: 3
+600: 2
+750: 1
+Part Seq: GGATGGTATGGGTGCTGCCGGTGTGGTGAT
+Hit Array: [120, 270, 420, 570, 720, 870]
+Individual index positions, number mismatches:
+0: 0
+300: 4
+450: 3
+600: 2
+750: 1
+{0: set([0]), 1: set([750]), 2: set([600]), 3: set([450]), 4: set([300])}
+TGGTTTGGTTGGACTTGGTGGCAAGTCTGCCGCTGATAAAGGAAAGGATACTCGTGATTATCTTGCTGCTGCATTTCCTGAGCTTAATGCTTGGGCTCGTGCTGGTGCTGATGGTTCGTTGGATGGTATGGGTGCTGCCGGTGTGGTGAT 30
+Part Seq: TGGTTTGGTTGGACTTGGTGGCAAGTCTGC
+Hit Array: []
+Individual index positions, number mismatches:
+Part Seq: CGCTGATAAAGGAAAGGATACTCGTGATTA
+Hit Array: [30, 180, 330, 480, 630, 780]
+Individual index positions, number mismatches:
+0: 1
+300: 4
+450: 3
+600: 3
+750: 2
+Part Seq: TCTTGCTGCTGCATTTCCTGAGCTTAATGC
+Hit Array: [60, 210, 360, 510, 660, 810]
+Individual index positions, number mismatches:
+0: 1
+300: 4
+450: 3
+600: 3
+750: 2
+Part Seq: TTGGGCTCGTGCTGGTGCTGATGGTTCGTT
+Hit Array: [90, 240, 390, 540, 690, 840]
+Individual index positions, number mismatches:
+0: 1
+300: 4
+450: 3
+600: 3
+750: 2
+Part Seq: GGATGGTATGGGTGCTGCCGGTGTGGTGAT
+Hit Array: [120, 270, 420, 570, 720, 870]
+Individual index positions, number mismatches:
+0: 1
+300: 4
+450: 3
+600: 3
+750: 2
+{0: set([]), 1: set([0]), 2: set([750]), 3: set([600, 450]), 4: set([300])}
+TGGTTTGGTTGGACTTGGTGGCAAGTCTGCCGCTGATAAAGGAAAGGATACTCGTGATTATCTTGCTGCTGCATTTCCTGAGCTTAATGCTTGGGCTCGTGCTGGTGCTGATGGTTCGTTGGATGGTATGGGTGCTGCCGGTGTGGTGAG 30
+Part Seq: TGGTTTGGTTGGACTTGGTGGCAAGTCTGC
+Hit Array: []
+Individual index positions, number mismatches:
+Part Seq: CGCTGATAAAGGAAAGGATACTCGTGATTA
+Hit Array: [30, 180, 330, 480, 630, 780]
+Individual index positions, number mismatches:
+0: 2
+450: 4
+600: 4
+750: 3
+Part Seq: TCTTGCTGCTGCATTTCCTGAGCTTAATGC
+Hit Array: [60, 210, 360, 510, 660, 810]
+Individual index positions, number mismatches:
+0: 2
+450: 4
+600: 4
+750: 3
+Part Seq: TTGGGCTCGTGCTGGTGCTGATGGTTCGTT
+Hit Array: [90, 240, 390, 540, 690, 840]
+Individual index positions, number mismatches:
+0: 2
+450: 4
+600: 4
+750: 3
+Part Seq: GGATGGTATGGGTGCTGCCGGTGTGGTGAG
+Hit Array: []
+Individual index positions, number mismatches:
+{0: set([]), 1: set([]), 2: set([0]), 3: set([750]), 4: set([600, 450])}
+1 1 1 0 0
