@@ -6,7 +6,7 @@ import argparse
 import pickle
 from pysam import FastaFile
 from array import array
-from collections import defaultdict
+from collections import defaultdict, deque
 from functools import partial
 
 
@@ -27,6 +27,7 @@ class InvertedIndex:
                 if i % 1000000 == 0 and i != 0:
                     print("Processed {} kmers".format(i), end="\r")
                 kmer = self.ref.fetch(record, i, i+k)
+                minimizer = self.compute_minimizer(kmer, k, 15)
                 contig_idx[kmer].append(i)
             print("Processed {} kmers".format(i))
             self.index[record] = contig_idx
@@ -43,8 +44,20 @@ class InvertedIndex:
         print("Index written to disk")
 
     # TODO
-    def compute_minimzer(self):
-        pass
+    # def compute_minimzer(self, read, n, k):
+    #     Qi = deque()
+    #     for i in range(k):
+    #         while Qi and arr[i] >= arr[Qi[-1]]:
+    #             Qi.pop()
+    #         Qi.append(i)
+    #     for i in range(k, n):
+    #         print(str(arr[Qi[0]]) + " ", end="")
+    #         while Qi and Qi[0] <= i - k:
+    #             Qi.popleft()
+    #         while Qi and arr[i] >= arr[Qi[-1]]:
+    #             Qi.pop()
+    #         Qi.append(i)
+    #     print(str(arr[Qi[0]]))
 
 
 if __name__ == "__main__":

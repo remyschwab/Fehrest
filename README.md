@@ -45,3 +45,9 @@ Where an edit may be an insertion, deletion, or a mismatch.
     python index.py -r input/chr22.fasta  174.80s user 53.40s system 93% cpu 4:03.46 total
     ```
 
+
+## Command Tracking
+
+```bash
+remy@Remys-MacBook-Pro-2 input % wgsim -N100 -1150 -S12 -h sars_cov_2.fasta sars_cov_2.fastq tmp.fastq
+```

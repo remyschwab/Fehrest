@@ -1,9 +1,10 @@
-#!/Users/remy/Applications/PyCharmProjects/SAE/venv/bin/python
+#!/Users/remy/Applications/PyCharmProjects/fehrest/venv/bin/python
 
 import argparse
 import pickle
 from collections import defaultdict
 from index import InvertedIndex
+from pysam import FastxFile
 
 
 def align(p, d, idx):
@@ -34,29 +35,49 @@ def align(p, d, idx):
     return offsets
 
 
-def summarize_alignments(offsets):
+def summarize_alignments(alignment_lst):
     counts = {0: [], 1: [], 2: [], 3: [], 4: []}
-    for contig in offsets:
-        matches = offsets[contig]
-        for match in matches:
-            if match[1] == 0:
-                counts[0].append(match[0])
-            elif match[1] == 1:
-                counts[1].append(match[0])
-            elif match[1] == 2:
-                counts[2].append(match[0])
-            elif match[1] == 3:
-                counts[3].append(match[0])
-            elif match[1] == 4:
-                counts[4].append(match[0])
+    for aln in alignment_lst:
+        for contig in aln:
+            matches = aln[contig]
+            for match in matches:
+                if match[1] == 0:
+                    counts[0].append(match[0])
+                elif match[1] == 1:
+                    counts[1].append(match[0])
+                elif match[1] == 2:
+                    counts[2].append(match[0])
+                elif match[1] == 3:
+                    counts[3].append(match[0])
+                elif match[1] == 4:
+                    counts[4].append(match[0])
     print(counts)
+
+
+def best_alignments(alignment_lst):
+    counts = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0}
+    for aln in alignment_lst:
+        for contig in aln:
+            matches = aln[contig]
+            best_match = sorted(matches, key=lambda x: x[1])[0]
+            if best_match[1] == 0:
+                counts[0] += 1
+            elif best_match[1] == 1:
+                counts[1] += 1
+            elif best_match[1] == 2:
+                counts[2] += 1
+            elif best_match[1] == 3:
+                counts[3] += 1
+            elif best_match[1] == 4:
+                counts[4] += 1
+    print(list(counts.values()))
 
 
 if __name__ == "__main__":
     # Parse command
     parser = argparse.ArgumentParser()
     parser.add_argument("-x", "--index", required=True, help="The path to your index file")
-    parser.add_argument("-p", "--pattern", required=True, help="Pattern you're looking for")
+    parser.add_argument("-fq", "--fastx", required=True, help="Path to your sequencing reads")
     args = parser.parse_args()
 
     # Prepare index
@@ -68,5 +89,12 @@ if __name__ == "__main__":
     # Sample human patterns to search for
     # p1 = "TGGATGTGAAATGAGTCAAG"
     # p2 = "GGGTGGGGGGAGTTTGCTCC"
-    alignments = align(args.pattern, 4, inverted_index)
+    reads = FastxFile(args.fastx)
+    alignments = []
+    for read in reads:
+        alignment = align(read.sequence, 4, inverted_index)
+        alignments.append(alignment)
+
+    # Some Summaries
     summarize_alignments(alignments)
+    best_alignments(alignments)
