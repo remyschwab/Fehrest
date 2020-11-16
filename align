@@ -21,14 +21,18 @@ def align(p, d, idx):
             anchors = inverted_index.query(kmer, contig)
             if anchors:
                 for anchor in anchors:
+                    if anchor-shift < 0:
+                        continue  # fell off the LHS of the genome
+                    if anchor-shift+len(p) > idx.ref.get_reference_length(contig):
+                        continue  # fell off the RHS of the genome
                     if anchor-shift >= 0:
                         seeds.add((contig, anchor-shift))
     # Extend
     for seed in seeds:
         hit = idx.ref.fetch(seed[0], seed[1], seed[1]+len(p))
         # Don't perform alignment if hit falls off the end of the genome
-        if len(hit) < len(p):
-            continue
+        # if len(hit) < len(p):
+        #     continue
         hamming_distance = [a != b for (a, b) in zip(p, hit)].count(True)
         if hamming_distance <= d and (seed, hamming_distance) not in offsets[contig]:
             offsets[contig].append((seed[1], hamming_distance))
@@ -91,10 +95,13 @@ if __name__ == "__main__":
     # p2 = "GGGTGGGGGGAGTTTGCTCC"
     reads = FastxFile(args.fastx)
     alignments = []
+    complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
     for read in reads:
-        alignment = align(read.sequence, 4, inverted_index)
+        alignment = align(read.sequence, 3, inverted_index)
+        rc_alignment = align(read.sequence.translate(read.sequence.maketrans(complement)), 3, inverted_index)
         alignments.append(alignment)
+        alignments.append(rc_alignment)
 
     # Some Summaries
-    summarize_alignments(alignments)
+    # summarize_alignments(alignments)
     best_alignments(alignments)

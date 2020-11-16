@@ -1,4 +1,4 @@
-#! /Users/remy/Applications/PyCharmProjects/fehrest/venv/bin/python
+#!/Users/remy/Applications/PyCharmProjects/fehrest/venv/bin/python
 
 
 import os
@@ -27,7 +27,7 @@ class InvertedIndex:
                 if i % 1000000 == 0 and i != 0:
                     print("Processed {} kmers".format(i), end="\r")
                 kmer = self.ref.fetch(record, i, i+k)
-                minimizer = self.compute_minimizer(kmer, k, 15)
+                # minimizer = self.compute_minimizer(kmer, k, 15)
                 contig_idx[kmer].append(i)
             print("Processed {} kmers".format(i))
             self.index[record] = contig_idx
