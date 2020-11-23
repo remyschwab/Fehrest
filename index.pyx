@@ -1,13 +1,14 @@
-#!/Users/remy/Applications/PyCharmProjects/fehrest/venv/bin/python
-
+#cython: language_level=3
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 
 import os
-import argparse
+import sys
 import pickle
-from pysam import FastaFile
 from array import array
-from collections import defaultdict, deque
+from collections import defaultdict
 from functools import partial
+from pysam import FastaFile
 
 
 class InvertedIndex:
@@ -19,15 +20,17 @@ class InvertedIndex:
 
     def build(self):
         """Build the inverted index over each contig present in the reference fasta"""
-        k = self.k
+        cdef int k = self.k
+        cdef int i
         for record in self.ref.references:
             print("Indexing {}".format(record))
             contig_idx = defaultdict(partial(array, 'I'))
             for i in range(self.ref.get_reference_length(record)-k+1):
                 if i % 1000000 == 0 and i != 0:
-                    print("Processed {} kmers".format(i), end="\r")
-                kmer = self.ref.fetch(record, i, i+k)
-                # minimizer = self.compute_minimizer(kmer, k, 15)
+                    print("Processed {} kmers\r".format(i))
+                kmer = self.ref.fetch(record, i, i+k).encode()
+                if b'N' in kmer:
+                    continue # This will avoid spurious alignments downstream
                 contig_idx[kmer].append(i)
             print("Processed {} kmers".format(i))
             self.index[record] = contig_idx
@@ -58,15 +61,3 @@ class InvertedIndex:
     #             Qi.pop()
     #         Qi.append(i)
     #     print(str(arr[Qi[0]]))
-
-
-if __name__ == "__main__":
-    # Parse command
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-r", "--ref", required=True, help="The path to your reference genome in FASTA format")
-    parser.add_argument("-k", "--kmer_length", default=30, help="kmer/word length")
-    args = parser.parse_args()
-    # Build the index
-    index = InvertedIndex(args.ref, args.kmer_length)
-    index.build()
-    index.persist()

@@ -1,0 +1,3 @@
+setuptools~=50.3.2
+Cython~=0.29.21
+pysam~=0.16.0.1
