@@ -27,10 +27,10 @@ class InvertedIndex:
             contig_idx = defaultdict(partial(array, 'I'))
             for i in range(self.ref.get_reference_length(record)-k+1):
                 if i % 1000000 == 0 and i != 0:
-                    print("Processed {} kmers\r".format(i))
+                    print("Processed {} kmers\r".format(i), end="\r")
                 kmer = self.ref.fetch(record, i, i+k).encode()
                 if b'N' in kmer:
-                    continue # This will avoid spurious alignments downstream
+                    continue # This will save space and avoid spurious alignments downstream
                 contig_idx[kmer].append(i)
             print("Processed {} kmers".format(i))
             self.index[record] = contig_idx

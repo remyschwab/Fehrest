@@ -44,7 +44,13 @@ Where an edit may be an insertion, deletion, or a mismatch.
   * ```bash
     python index.py -r input/chr22.fasta  174.80s user 53.40s system 93% cpu 4:03.46 total
     ```
+  
 
+- Cython!
+
+  - ```bash
+    ./idx.py -r input/chr22.fasta -k 5  67.58s user 0.46s system 99% cpu 1:08.64 total
+    ```
 
 ## Command Tracking
 
