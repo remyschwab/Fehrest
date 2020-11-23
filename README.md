@@ -12,13 +12,20 @@ Where an edit may be an insertion, deletion, or a mismatch.
 
 ## TODO:
 
+Tier 1:
 * Extend to handle size of human genome (write postings list to disk)
+* Forward & reverse strand processing
+
+Tier 2:
+
+- Unit Testing
+- Make pip installable
+
+Tier 3:
 * Implement minimizer index (instead of kmers) with seed, chain, and extend approach
 * Semi-global alignment (parasail)
 * Process multiple seeds in parallel
 * Bit encoding of kmers
-* Forward & reverse strand processing
-* Report Best Alignment?
 
 
 

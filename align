@@ -1,4 +1,5 @@
 #!/Users/remy/Applications/PyCharmProjects/fehrest/venv/bin/python
+# -*- coding: utf-8 -*-
 
 import argparse
 import pickle
@@ -8,6 +9,10 @@ from pysam import FastxFile
 
 
 def align(p, d, idx):
+    k = inverted_index.k
+    mod = len(p) % k
+    if mod != 0:
+        print("An extra partition of length {} cannot not be seeded".format(mod))
     offsets = defaultdict(list)
     seeds = set()
     # Seed
@@ -18,7 +23,7 @@ def align(p, d, idx):
         kmer = p[shift:shift + inverted_index.k]
         # For each contig of genome
         for contig in inverted_index.index:
-            anchors = inverted_index.query(kmer, contig)
+            anchors = inverted_index.query(kmer.encode(), contig)
             if anchors:
                 for anchor in anchors:
                     if anchor-shift < 0:
@@ -30,9 +35,6 @@ def align(p, d, idx):
     # Extend
     for seed in seeds:
         hit = idx.ref.fetch(seed[0], seed[1], seed[1]+len(p))
-        # Don't perform alignment if hit falls off the end of the genome
-        # if len(hit) < len(p):
-        #     continue
         hamming_distance = [a != b for (a, b) in zip(p, hit)].count(True)
         if hamming_distance <= d and (seed, hamming_distance) not in offsets[contig]:
             offsets[contig].append((seed[1], hamming_distance))
@@ -82,12 +84,18 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-x", "--index", required=True, help="The path to your index file")
     parser.add_argument("-fq", "--fastx", required=True, help="Path to your sequencing reads")
+    parser.add_argument("-d", "--distance", default=4, help="Maximum distance of P from T")
+    parser.add_argument("-db", "--debug", default=False, help="Some extra printing for debugging")
     args = parser.parse_args()
 
     # Prepare index
     index_dump = pickle.load(open(args.index, 'rb'))
     inverted_index = InvertedIndex(index_dump[2], index_dump[0])
     inverted_index.index = index_dump[1]
+
+    debug = args.debug
+    if debug:
+        print("Value of k is {}".format(index_dump[0]))
 
     # Perform alignment
     # Sample human patterns to search for
@@ -96,11 +104,16 @@ if __name__ == "__main__":
     reads = FastxFile(args.fastx)
     alignments = []
     complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
+    d = int(args.distance)
     for read in reads:
-        alignment = align(read.sequence, 3, inverted_index)
-        rc_alignment = align(read.sequence.translate(read.sequence.maketrans(complement)), 3, inverted_index)
+        if debug:
+            print(len(read.sequence))
+        # |P| cannot be < k
+        assert len(read.sequence) > index_dump[0]
+        alignment = align(read.sequence, d, inverted_index)
         alignments.append(alignment)
-        alignments.append(rc_alignment)
+        # rc_alignment = align(read.sequence.translate(read.sequence.maketrans(complement)), 3, inverted_index)
+        # alignments.append(rc_alignment)
 
     # Some Summaries
     # summarize_alignments(alignments)
