@@ -25,14 +25,17 @@ class InvertedIndex:
         for record in self.ref.references:
             print("Indexing {}".format(record))
             contig_idx = defaultdict(partial(array, 'I'))
-            for i in range(self.ref.get_reference_length(record)-k+1):
+            reference_length = self.ref.get_reference_length(record)
+            ref_mlen = reference_length / 1000000
+            for i in range(reference_length-k+1):
                 if i % 1000000 == 0 and i != 0:
-                    print("Processed {} kmers\r".format(i), end="\r")
+                    sys.stdout.write('\rProcessed %0.2f million kmers out of %0.2f' % (float(i)/1000000, ref_mlen))
+                    sys.stdout.flush()
                 kmer = self.ref.fetch(record, i, i+k).encode()
                 if b'N' in kmer:
                     continue # This will save space and avoid spurious alignments downstream
                 contig_idx[kmer].append(i)
-            print("Processed {} kmers".format(i))
+            print("\nProcessed {} kmers".format(i))
             self.index[record] = contig_idx
 
     def query(self, kmer, contig):

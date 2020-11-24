@@ -1,47 +1,63 @@
-#!/Users/remy/Applications/PyCharmProjects/fehrest/venv/bin/python
+#!venv/bin/python
 # -*- coding: utf-8 -*-
+
+"""This module will instantiate an Inverted Index from disk and
+use it to search for reads from a FASTQ file"""
 
 import argparse
 import pickle
 from collections import defaultdict
-from index import InvertedIndex
 from pysam import FastxFile
+from index import InvertedIndex
+from base2base_aln import hamming_distance
 
 
-def align(p, d, idx):
-    k = inverted_index.k
-    mod = len(p) % k
+def partition(pattern, dist):
+    """Employ Pigeon-Hole-Principle to partition the pattern into non-overlapping substrings"""
+    k = int(len(pattern) / (dist + 1))
+    mod = len(pattern) % k
+    partitions = []
+    for i in range(0, dist + 1):
+        shift = i * k
+        kmer = pattern[shift : shift + k]
+        partitions.append((kmer, shift))
     if mod != 0:
         print("An extra partition of length {} cannot not be seeded".format(mod))
-    offsets = defaultdict(list)
+    return partitions
+
+
+def seed(pattern, partitions, idx):
+    """Query the partitions for anchors to the genome"""
+    contig = None
     seeds = set()
-    # Seed
-    # For each partition
-    for i in range(0, d + 1):
-        # Employ PHP strategy
-        shift = i * inverted_index.k
-        kmer = p[shift:shift + inverted_index.k]
-        # For each contig of genome
-        for contig in inverted_index.index:
-            anchors = inverted_index.query(kmer.encode(), contig)
+    for kmer, shift in partitions:
+        for contig in idx.index:
+            contig_length = idx.ref.get_reference_length(contig)
+            anchors = idx.query(kmer.encode(), contig)
             if anchors:
                 for anchor in anchors:
-                    if anchor-shift < 0:
+                    if anchor - shift < 0:
                         continue  # fell off the LHS of the genome
-                    if anchor-shift+len(p) > idx.ref.get_reference_length(contig):
+                    if anchor - shift + len(pattern) > contig_length:
                         continue  # fell off the RHS of the genome
-                    if anchor-shift >= 0:
-                        seeds.add((contig, anchor-shift))
-    # Extend
-    for seed in seeds:
-        hit = idx.ref.fetch(seed[0], seed[1], seed[1]+len(p))
-        hamming_distance = [a != b for (a, b) in zip(p, hit)].count(True)
-        if hamming_distance <= d and (seed, hamming_distance) not in offsets[contig]:
-            offsets[contig].append((seed[1], hamming_distance))
+                    seeds.add((contig, anchor - shift))
+    return seeds
+
+
+def extend(pattern, anchors, idx, dist):
+    """Extend seeds by using base-to-base comparison"""
+    offsets = defaultdict(list)
+    for contig, anchor in anchors:
+        hit = idx.ref.fetch(contig, anchor, anchor + len(pattern))
+        h_dist = hamming_distance(pattern, hit, dist)
+        if h_dist <= dist and (anchor, hamming_distance) not in offsets[contig]:
+            offsets[contig].append((anchor, h_dist))
     return offsets
 
 
 def summarize_alignments(alignment_lst):
+    """Print out how many reads had an alignment
+    at each distnace from the the Text"""
     counts = {0: [], 1: [], 2: [], 3: [], 4: []}
     for aln in alignment_lst:
         for contig in aln:
@@ -61,6 +77,7 @@ def summarize_alignments(alignment_lst):
 
 
 def best_alignments(alignment_lst):
+    """How many reads had their best alignment at each distnace from the text"""
     counts = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0}
     for aln in alignment_lst:
         for contig in aln:
@@ -81,40 +98,45 @@ def best_alignments(alignment_lst):
 
 if __name__ == "__main__":
     # Parse command
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-x", "--index", required=True, help="The path to your index file")
-    parser.add_argument("-fq", "--fastx", required=True, help="Path to your sequencing reads")
-    parser.add_argument("-d", "--distance", default=4, help="Maximum distance of P from T")
-    parser.add_argument("-db", "--debug", default=False, help="Some extra printing for debugging")
-    args = parser.parse_args()
+    PARSER = argparse.ArgumentParser()
+    PARSER.add_argument(
+        "-x", "--index", required=True, help="The path to your index file"
+    )
+    PARSER.add_argument(
+        "-i", "--reads", required=True, help="Path to your sequencing reads"
+    )
+    PARSER.add_argument(
+        "-d", "--distance", default=4, help="Maximum distance of P from T"
+    )
+    PARSER.add_argument(
+        "-db", "--debug", default=False, help="Some extra printing for debugging"
+    )
+    ARGS = PARSER.parse_args()
 
-    # Prepare index
-    index_dump = pickle.load(open(args.index, 'rb'))
-    inverted_index = InvertedIndex(index_dump[2], index_dump[0])
-    inverted_index.index = index_dump[1]
+    # Load Index from Disk
+    INDEX_DUMP = pickle.load(open(ARGS.index, "rb"))
+    INVERTED_INDEX = InvertedIndex(INDEX_DUMP[2], INDEX_DUMP[0])
+    INVERTED_INDEX.index = INDEX_DUMP[1]
 
-    debug = args.debug
-    if debug:
-        print("Value of k is {}".format(index_dump[0]))
+    DEBUG = ARGS.debug
+    if DEBUG:
+        print("Value of k is {}".format(INDEX_DUMP[0]))
 
     # Perform alignment
     # Sample human patterns to search for
-    # p1 = "TGGATGTGAAATGAGTCAAG"
-    # p2 = "GGGTGGGGGGAGTTTGCTCC"
-    reads = FastxFile(args.fastx)
-    alignments = []
-    complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
-    d = int(args.distance)
-    for read in reads:
-        if debug:
+    READS = FastxFile(ARGS.reads)
+    ALIGNMENTS = []
+    DISTANCE = int(ARGS.distance)
+    for read in READS:
+        if DEBUG:
             print(len(read.sequence))
         # |P| cannot be < k
-        assert len(read.sequence) > index_dump[0]
-        alignment = align(read.sequence, d, inverted_index)
-        alignments.append(alignment)
-        # rc_alignment = align(read.sequence.translate(read.sequence.maketrans(complement)), 3, inverted_index)
-        # alignments.append(rc_alignment)
+        assert len(read.sequence) > INDEX_DUMP[0]
+        parts = partition(read.sequence, DISTANCE)
+        gseeds = seed(read.sequence, parts, INVERTED_INDEX)
+        alignment = extend(read.sequence, gseeds, INVERTED_INDEX, DISTANCE)
+        ALIGNMENTS.append(alignment)
 
     # Some Summaries
     # summarize_alignments(alignments)
-    best_alignments(alignments)
+    best_alignments(ALIGNMENTS)
