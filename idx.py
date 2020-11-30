@@ -7,8 +7,8 @@ from index import InvertedIndex
 def main(ref, k):
     # Build the index
     index = InvertedIndex(ref, k)
+    index.prepare_disk()
     index.build()
-    index.persist()
 
 
 if __name__ == "__main__":

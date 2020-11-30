@@ -1,6 +1,5 @@
 #cython: language_level=3
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 
 import os
 import sys
@@ -16,7 +15,7 @@ class InvertedIndex:
         self.k = int(k)
         self.ref_path = ref_path
         self.ref = FastaFile(ref_path)
-        self.index = {}
+        self.dir = None
 
     def build(self):
         """Build the inverted index over each contig present in the reference fasta"""
@@ -29,38 +28,33 @@ class InvertedIndex:
             ref_mlen = reference_length / 1000000
             for i in range(reference_length-k+1):
                 if i % 1000000 == 0 and i != 0:
-                    sys.stdout.write('\rProcessed %0.2f million kmers out of %0.2f' % (float(i)/1000000, ref_mlen))
+                    sys.stdout.write('\rProcessed %0.0f million kmers out of %0.0f' % (float(i)/1000000, ref_mlen))
                     sys.stdout.flush()
                 kmer = self.ref.fetch(record, i, i+k).encode()
                 if b'N' in kmer:
                     continue # This will save space and avoid spurious alignments downstream
                 contig_idx[kmer].append(i)
-            print("\nProcessed {} kmers".format(i))
-            self.index[record] = contig_idx
+            self.persist(record, contig_idx)
 
     def query(self, kmer, contig):
-        contig_idx = self.index[contig]
+        contig_idx = self.load_contig(contig)
         if kmer in contig_idx:
             return contig_idx[kmer]
 
-    def persist(self):
-        basename = os.path.basename(self.ref_path)
-        disk_name = os.path.splitext(basename)[0]+".pkl"
-        pickle.dump([self.k, self.index, self.ref_path], open(disk_name, 'wb'))
-        print("Index written to disk")
+    def load_contig(self, contig_name):
+        contig_idx = pickle.load(open(self.dir+'/'+contig_name+".pkl", "rb"))
+        return contig_idx
 
-    # TODO
-    # def compute_minimzer(self, read, n, k):
-    #     Qi = deque()
-    #     for i in range(k):
-    #         while Qi and arr[i] >= arr[Qi[-1]]:
-    #             Qi.pop()
-    #         Qi.append(i)
-    #     for i in range(k, n):
-    #         print(str(arr[Qi[0]]) + " ", end="")
-    #         while Qi and Qi[0] <= i - k:
-    #             Qi.popleft()
-    #         while Qi and arr[i] >= arr[Qi[-1]]:
-    #             Qi.pop()
-    #         Qi.append(i)
-    #     print(str(arr[Qi[0]]))
+    def prepare_disk(self):
+        basename = os.path.basename(self.ref_path)
+        disk_name = os.path.splitext(basename)[0]+"_idx"
+        os.mkdir(disk_name)
+        self.dir = disk_name
+        meta = [self.ref_path, self.k, self.dir]
+        pickle.dump(meta, open(disk_name+"/"+"meta_info", 'wb'))
+
+    def persist(self, ref_name, cntg_idx):
+        basename = ref_name
+        disk_name = self.dir+"/"+basename+".pkl"
+        pickle.dump(cntg_idx, open(disk_name, 'wb'))
+        print("\nIndex for {} written to disk".format(ref_name))

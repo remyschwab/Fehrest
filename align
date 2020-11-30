@@ -5,6 +5,7 @@
 use it to search for reads from a FASTQ file"""
 
 import argparse
+import os
 import pickle
 from collections import defaultdict
 from pysam import FastxFile
@@ -19,7 +20,7 @@ def partition(pattern, dist):
     partitions = []
     for i in range(0, dist + 1):
         shift = i * k
-        kmer = pattern[shift : shift + k]
+        kmer = pattern[shift: shift + k]
         partitions.append((kmer, shift))
     if mod != 0:
         print("An extra partition of length {} cannot not be seeded".format(mod))
@@ -30,8 +31,10 @@ def seed(pattern, partitions, idx):
     """Query the partitions for anchors to the genome"""
     contig = None
     seeds = set()
+    contigs = [os.path.splitext(ctg)[0] for ctg in os.listdir(idx.dir)]
+    contigs.remove('meta_info')
     for kmer, shift in partitions:
-        for contig in idx.index:
+        for contig in contigs:
             contig_length = idx.ref.get_reference_length(contig)
             anchors = idx.query(kmer.encode(), contig)
             if anchors:
@@ -114,13 +117,13 @@ if __name__ == "__main__":
     ARGS = PARSER.parse_args()
 
     # Load Index from Disk
-    INDEX_DUMP = pickle.load(open(ARGS.index, "rb"))
-    INVERTED_INDEX = InvertedIndex(INDEX_DUMP[2], INDEX_DUMP[0])
-    INVERTED_INDEX.index = INDEX_DUMP[1]
+    INDEX_DUMP = pickle.load(open(ARGS.index+'/meta_info', "rb"))
+    INVERTED_INDEX = InvertedIndex(INDEX_DUMP[0], INDEX_DUMP[1])
+    INVERTED_INDEX.dir = ARGS.index
 
     DEBUG = ARGS.debug
     if DEBUG:
-        print("Value of k is {}".format(INDEX_DUMP[0]))
+        print("Value of k is {}".format(INDEX_DUMP[1]))
 
     # Perform alignment
     # Sample human patterns to search for
@@ -131,7 +134,7 @@ if __name__ == "__main__":
         if DEBUG:
             print(len(read.sequence))
         # |P| cannot be < k
-        assert len(read.sequence) > INDEX_DUMP[0]
+        assert len(read.sequence) > INDEX_DUMP[1]
         parts = partition(read.sequence, DISTANCE)
         gseeds = seed(read.sequence, parts, INVERTED_INDEX)
         alignment = extend(read.sequence, gseeds, INVERTED_INDEX, DISTANCE)
