@@ -36,21 +36,17 @@ class InvertedIndex:
                 contig_idx[kmer].append(i)
             self.persist(record, contig_idx)
 
-    def query(self, kmer, contig):
-        contig_idx = self.load_contig(contig)
+    def query(self, kmer, contig_idx):
+        # contig_idx = self.load_contig(contig)
         if kmer in contig_idx:
             return contig_idx[kmer]
-
-    def load_contig(self, contig_name):
-        contig_idx = pickle.load(open(self.dir+'/'+contig_name+".pkl", "rb"))
-        return contig_idx
 
     def prepare_disk(self):
         basename = os.path.basename(self.ref_path)
         disk_name = os.path.splitext(basename)[0]+"_idx"
         os.mkdir(disk_name)
         self.dir = disk_name
-        meta = [self.ref_path, self.k, self.dir]
+        meta = [self.ref_path, self.k]
         pickle.dump(meta, open(disk_name+"/"+"meta_info", 'wb'))
 
     def persist(self, ref_name, cntg_idx):

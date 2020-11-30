@@ -5,8 +5,8 @@
 use it to search for reads from a FASTQ file"""
 
 import argparse
-import os
 import pickle
+import os
 from collections import defaultdict
 from pysam import FastxFile
 from index import InvertedIndex
@@ -17,44 +17,52 @@ def partition(pattern, dist):
     """Employ Pigeon-Hole-Principle to partition the pattern into non-overlapping substrings"""
     k = int(len(pattern) / (dist + 1))
     mod = len(pattern) % k
-    partitions = []
-    for i in range(0, dist + 1):
-        shift = i * k
-        kmer = pattern[shift: shift + k]
-        partitions.append((kmer, shift))
     if mod != 0:
-        print("An extra partition of length {} cannot not be seeded".format(mod))
+        print("An extra partition of length {} will not be seeded".format(mod))
+    partitions = [(pattern[shift:shift+k], shift) for shift in (i*k for i in range(dist+1))]
     return partitions
 
 
-def seed(pattern, partitions, idx):
+def load_contig(idx, contig_name):
+    """Load a contig's index from Disk"""
+    contig_idx = pickle.load(open(idx.dir+'/'+contig_name+".pkl", "rb"))
+    return contig_idx
+
+
+def seed(partitions, idx):
     """Query the partitions for anchors to the genome"""
-    contig = None
-    seeds = set()
+    # seeds = {}
+    seeds = []
     contigs = [os.path.splitext(ctg)[0] for ctg in os.listdir(idx.dir)]
     contigs.remove('meta_info')
-    for kmer, shift in partitions:
-        for contig in contigs:
-            contig_length = idx.ref.get_reference_length(contig)
-            anchors = idx.query(kmer.encode(), contig)
+    for contig in contigs:
+        # seeds[contig] = set()
+        # Each contig's index is only loaded once
+        contig_idx = load_contig(idx, contig)
+        for kmer, shift in partitions:
+            anchors = idx.query(kmer.encode(), contig_idx)
             if anchors:
                 for anchor in anchors:
-                    if anchor - shift < 0:
-                        continue  # fell off the LHS of the genome
-                    if anchor - shift + len(pattern) > contig_length:
-                        continue  # fell off the RHS of the genome
-                    seeds.add((contig, anchor - shift))
+                    # seeds[contig].add(anchor-shift)
+                    seeds.append((contig, anchor-shift))
     return seeds
 
 
-def extend(pattern, anchors, idx, dist):
+def extend(pattern, seeds, idx, dist):
     """Extend seeds by using base-to-base comparison"""
     offsets = defaultdict(list)
-    for contig, anchor in anchors:
-        hit = idx.ref.fetch(contig, anchor, anchor + len(pattern))
-        h_dist = hamming_distance(pattern, hit, dist)
-        if h_dist <= dist and (anchor, hamming_distance) not in offsets[contig]:
-            offsets[contig].append((anchor, h_dist))
+    for contig in seeds:
+        anchors = seeds[contig]
+        for anchor in anchors:
+            contig_length = idx.ref.get_reference_length(contig)
+            if anchor < 0:  # Fell off the LHS of the genome
+                continue
+            if anchor+len(pattern) > contig_length:  # Fell off RHS of the Genome
+                continue
+            hit = idx.ref.fetch(contig, anchor, anchor + len(pattern))
+            h_dist = hamming_distance(pattern, hit, dist)
+            if h_dist <= dist and (anchor, hamming_distance) not in offsets[contig]:
+                offsets[contig].append((anchor, h_dist))
     return offsets
 
 
@@ -136,9 +144,9 @@ if __name__ == "__main__":
         # |P| cannot be < k
         assert len(read.sequence) > INDEX_DUMP[1]
         parts = partition(read.sequence, DISTANCE)
-        gseeds = seed(read.sequence, parts, INVERTED_INDEX)
-        alignment = extend(read.sequence, gseeds, INVERTED_INDEX, DISTANCE)
-        ALIGNMENTS.append(alignment)
+        gseeds = seed(parts, INVERTED_INDEX)
+        #alignment = extend(read.sequence, gseeds, INVERTED_INDEX, DISTANCE)
+        #ALIGNMENTS.append(alignment)
 
     # Some Summaries
     # summarize_alignments(alignments)

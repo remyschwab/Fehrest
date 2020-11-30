@@ -1319,7 +1319,6 @@ static const char __pyx_k_N[] = "N";
 static const char __pyx_k_i[] = "i";
 static const char __pyx_k_k[] = "k";
 static const char __pyx_k_os[] = "os";
-static const char __pyx_k_rb[] = "rb";
 static const char __pyx_k_wb[] = "wb";
 static const char __pyx_k_dir[] = "dir";
 static const char __pyx_k_doc[] = "__doc__";
@@ -1331,7 +1330,6 @@ static const char __pyx_k_0_0f[] = "0.0f";
 static const char __pyx_k_dump[] = "dump";
 static const char __pyx_k_init[] = "__init__";
 static const char __pyx_k_kmer[] = "kmer";
-static const char __pyx_k_load[] = "load";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_meta[] = "meta";
 static const char __pyx_k_name[] = "__name__";
@@ -1351,7 +1349,6 @@ static const char __pyx_k_query[] = "query";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_write[] = "write";
 static const char __pyx_k_append[] = "append";
-static const char __pyx_k_contig[] = "contig";
 static const char __pyx_k_encode[] = "encode";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
@@ -1380,9 +1377,7 @@ static const char __pyx_k_metaclass[] = "__metaclass__";
 static const char __pyx_k_contig_idx[] = "contig_idx";
 static const char __pyx_k_references[] = "references";
 static const char __pyx_k_collections[] = "collections";
-static const char __pyx_k_contig_name[] = "contig_name";
 static const char __pyx_k_defaultdict[] = "defaultdict";
-static const char __pyx_k_load_contig[] = "load_contig";
 static const char __pyx_k_prepare_disk[] = "prepare_disk";
 static const char __pyx_k_InvertedIndex[] = "InvertedIndex";
 static const char __pyx_k_reference_length[] = "reference_length";
@@ -1394,7 +1389,6 @@ static const char __pyx_k_get_reference_length[] = "get_reference_length";
 static const char __pyx_k_million_kmers_out_of[] = " million kmers out of ";
 static const char __pyx_k_InvertedIndex_persist[] = "InvertedIndex.persist";
 static const char __pyx_k_Index_for_written_to_disk[] = "\nIndex for {} written to disk";
-static const char __pyx_k_InvertedIndex_load_contig[] = "InvertedIndex.load_contig";
 static const char __pyx_k_InvertedIndex_prepare_disk[] = "InvertedIndex.prepare_disk";
 static PyObject *__pyx_kp_u_;
 static PyObject *__pyx_kp_u_0_0f;
@@ -1405,7 +1399,6 @@ static PyObject *__pyx_kp_u_Indexing;
 static PyObject *__pyx_n_s_InvertedIndex;
 static PyObject *__pyx_n_s_InvertedIndex___init;
 static PyObject *__pyx_n_s_InvertedIndex_build;
-static PyObject *__pyx_n_s_InvertedIndex_load_contig;
 static PyObject *__pyx_n_s_InvertedIndex_persist;
 static PyObject *__pyx_n_s_InvertedIndex_prepare_disk;
 static PyObject *__pyx_n_s_InvertedIndex_query;
@@ -1418,9 +1411,7 @@ static PyObject *__pyx_n_s_build;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_cntg_idx;
 static PyObject *__pyx_n_s_collections;
-static PyObject *__pyx_n_s_contig;
 static PyObject *__pyx_n_s_contig_idx;
-static PyObject *__pyx_n_s_contig_name;
 static PyObject *__pyx_n_s_defaultdict;
 static PyObject *__pyx_n_s_dir;
 static PyObject *__pyx_n_s_disk_name;
@@ -1440,8 +1431,6 @@ static PyObject *__pyx_kp_s_index_pyx;
 static PyObject *__pyx_n_s_init;
 static PyObject *__pyx_n_s_k;
 static PyObject *__pyx_n_s_kmer;
-static PyObject *__pyx_n_s_load;
-static PyObject *__pyx_n_s_load_contig;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_meta;
 static PyObject *__pyx_n_u_meta_info;
@@ -1464,7 +1453,6 @@ static PyObject *__pyx_n_s_pysam;
 static PyObject *__pyx_n_s_qualname;
 static PyObject *__pyx_n_s_query;
 static PyObject *__pyx_n_s_range;
-static PyObject *__pyx_n_u_rb;
 static PyObject *__pyx_n_s_record;
 static PyObject *__pyx_n_s_ref;
 static PyObject *__pyx_n_s_ref_mlen;
@@ -1481,10 +1469,9 @@ static PyObject *__pyx_n_u_wb;
 static PyObject *__pyx_n_s_write;
 static PyObject *__pyx_pf_5index_13InvertedIndex___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ref_path, PyObject *__pyx_v_k); /* proto */
 static PyObject *__pyx_pf_5index_13InvertedIndex_2build(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5index_13InvertedIndex_4query(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_kmer, PyObject *__pyx_v_contig); /* proto */
-static PyObject *__pyx_pf_5index_13InvertedIndex_6load_contig(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_contig_name); /* proto */
-static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5index_13InvertedIndex_10persist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ref_name, PyObject *__pyx_v_cntg_idx); /* proto */
+static PyObject *__pyx_pf_5index_13InvertedIndex_4query(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self, PyObject *__pyx_v_kmer, PyObject *__pyx_v_contig_idx); /* proto */
+static PyObject *__pyx_pf_5index_13InvertedIndex_6prepare_disk(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5index_13InvertedIndex_8persist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ref_name, PyObject *__pyx_v_cntg_idx); /* proto */
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_1000000;
 static PyObject *__pyx_tuple__2;
@@ -1492,13 +1479,11 @@ static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_tuple__6;
 static PyObject *__pyx_tuple__8;
 static PyObject *__pyx_tuple__10;
-static PyObject *__pyx_tuple__12;
 static PyObject *__pyx_codeobj__3;
 static PyObject *__pyx_codeobj__5;
 static PyObject *__pyx_codeobj__7;
 static PyObject *__pyx_codeobj__9;
 static PyObject *__pyx_codeobj__11;
-static PyObject *__pyx_codeobj__13;
 /* Late includes */
 
 /* "index.pyx":14
@@ -2236,7 +2221,7 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_2build(CYTHON_UNUSED PyObject *
  *                 contig_idx[kmer].append(i)
  *             self.persist(record, contig_idx)             # <<<<<<<<<<<<<<
  * 
- *     def query(self, kmer, contig):
+ *     def query(self, kmer, contig_idx):
  */
     __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_persist); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 37, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
@@ -2333,8 +2318,8 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_2build(CYTHON_UNUSED PyObject *
 /* "index.pyx":39
  *             self.persist(record, contig_idx)
  * 
- *     def query(self, kmer, contig):             # <<<<<<<<<<<<<<
- *         contig_idx = self.load_contig(contig)
+ *     def query(self, kmer, contig_idx):             # <<<<<<<<<<<<<<
+ *         # contig_idx = self.load_contig(contig)
  *         if kmer in contig_idx:
  */
 
@@ -2342,9 +2327,9 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_2build(CYTHON_UNUSED PyObject *
 static PyObject *__pyx_pw_5index_13InvertedIndex_5query(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyMethodDef __pyx_mdef_5index_13InvertedIndex_5query = {"query", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5index_13InvertedIndex_5query, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_5index_13InvertedIndex_5query(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_self = 0;
+  CYTHON_UNUSED PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_kmer = 0;
-  PyObject *__pyx_v_contig = 0;
+  PyObject *__pyx_v_contig_idx = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2352,7 +2337,7 @@ static PyObject *__pyx_pw_5index_13InvertedIndex_5query(PyObject *__pyx_self, Py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("query (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_kmer,&__pyx_n_s_contig,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_kmer,&__pyx_n_s_contig_idx,0};
     PyObject* values[3] = {0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -2380,7 +2365,7 @@ static PyObject *__pyx_pw_5index_13InvertedIndex_5query(PyObject *__pyx_self, Py
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_contig)) != 0)) kw_args--;
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_contig_idx)) != 0)) kw_args--;
         else {
           __Pyx_RaiseArgtupleInvalid("query", 1, 3, 3, 2); __PYX_ERR(0, 39, __pyx_L3_error)
         }
@@ -2397,7 +2382,7 @@ static PyObject *__pyx_pw_5index_13InvertedIndex_5query(PyObject *__pyx_self, Py
     }
     __pyx_v_self = values[0];
     __pyx_v_kmer = values[1];
-    __pyx_v_contig = values[2];
+    __pyx_v_contig_idx = values[2];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
@@ -2407,82 +2392,52 @@ static PyObject *__pyx_pw_5index_13InvertedIndex_5query(PyObject *__pyx_self, Py
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5index_13InvertedIndex_4query(__pyx_self, __pyx_v_self, __pyx_v_kmer, __pyx_v_contig);
+  __pyx_r = __pyx_pf_5index_13InvertedIndex_4query(__pyx_self, __pyx_v_self, __pyx_v_kmer, __pyx_v_contig_idx);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5index_13InvertedIndex_4query(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_kmer, PyObject *__pyx_v_contig) {
-  PyObject *__pyx_v_contig_idx = NULL;
+static PyObject *__pyx_pf_5index_13InvertedIndex_4query(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self, PyObject *__pyx_v_kmer, PyObject *__pyx_v_contig_idx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
+  int __pyx_t_1;
+  int __pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
-  int __pyx_t_4;
-  int __pyx_t_5;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("query", 0);
 
-  /* "index.pyx":40
- * 
- *     def query(self, kmer, contig):
- *         contig_idx = self.load_contig(contig)             # <<<<<<<<<<<<<<
- *         if kmer in contig_idx:
- *             return contig_idx[kmer]
- */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_load_contig); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_contig) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_contig);
-  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v_contig_idx = __pyx_t_1;
-  __pyx_t_1 = 0;
-
   /* "index.pyx":41
- *     def query(self, kmer, contig):
- *         contig_idx = self.load_contig(contig)
+ *     def query(self, kmer, contig_idx):
+ *         # contig_idx = self.load_contig(contig)
  *         if kmer in contig_idx:             # <<<<<<<<<<<<<<
  *             return contig_idx[kmer]
  * 
  */
-  __pyx_t_4 = (__Pyx_PySequence_ContainsTF(__pyx_v_kmer, __pyx_v_contig_idx, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 41, __pyx_L1_error)
-  __pyx_t_5 = (__pyx_t_4 != 0);
-  if (__pyx_t_5) {
+  __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_kmer, __pyx_v_contig_idx, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_2 = (__pyx_t_1 != 0);
+  if (__pyx_t_2) {
 
     /* "index.pyx":42
- *         contig_idx = self.load_contig(contig)
+ *         # contig_idx = self.load_contig(contig)
  *         if kmer in contig_idx:
  *             return contig_idx[kmer]             # <<<<<<<<<<<<<<
  * 
- *     def load_contig(self, contig_name):
+ *     def prepare_disk(self):
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_contig_idx, __pyx_v_kmer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_contig_idx, __pyx_v_kmer); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_r = __pyx_t_3;
+    __pyx_t_3 = 0;
     goto __pyx_L0;
 
     /* "index.pyx":41
- *     def query(self, kmer, contig):
- *         contig_idx = self.load_contig(contig)
+ *     def query(self, kmer, contig_idx):
+ *         # contig_idx = self.load_contig(contig)
  *         if kmer in contig_idx:             # <<<<<<<<<<<<<<
  *             return contig_idx[kmer]
  * 
@@ -2492,8 +2447,8 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_4query(CYTHON_UNUSED PyObject *
   /* "index.pyx":39
  *             self.persist(record, contig_idx)
  * 
- *     def query(self, kmer, contig):             # <<<<<<<<<<<<<<
- *         contig_idx = self.load_contig(contig)
+ *     def query(self, kmer, contig_idx):             # <<<<<<<<<<<<<<
+ *         # contig_idx = self.load_contig(contig)
  *         if kmer in contig_idx:
  */
 
@@ -2501,13 +2456,10 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_4query(CYTHON_UNUSED PyObject *
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_AddTraceback("index.InvertedIndex.query", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_contig_idx);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -2516,200 +2468,26 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_4query(CYTHON_UNUSED PyObject *
 /* "index.pyx":44
  *             return contig_idx[kmer]
  * 
- *     def load_contig(self, contig_name):             # <<<<<<<<<<<<<<
- *         contig_idx = pickle.load(open(self.dir+'/'+contig_name+".pkl", "rb"))
- *         return contig_idx
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_5index_13InvertedIndex_7load_contig(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_5index_13InvertedIndex_7load_contig = {"load_contig", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5index_13InvertedIndex_7load_contig, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5index_13InvertedIndex_7load_contig(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_contig_name = 0;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("load_contig (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_contig_name,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_contig_name)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("load_contig", 1, 2, 2, 1); __PYX_ERR(0, 44, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "load_contig") < 0)) __PYX_ERR(0, 44, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-    }
-    __pyx_v_self = values[0];
-    __pyx_v_contig_name = values[1];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("load_contig", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 44, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("index.InvertedIndex.load_contig", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5index_13InvertedIndex_6load_contig(__pyx_self, __pyx_v_self, __pyx_v_contig_name);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_5index_13InvertedIndex_6load_contig(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_contig_name) {
-  PyObject *__pyx_v_contig_idx = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("load_contig", 0);
-
-  /* "index.pyx":45
- * 
- *     def load_contig(self, contig_name):
- *         contig_idx = pickle.load(open(self.dir+'/'+contig_name+".pkl", "rb"))             # <<<<<<<<<<<<<<
- *         return contig_idx
- * 
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pickle); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_load); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dir); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_kp_u_); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_4, __pyx_v_contig_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_kp_u_pkl); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4);
-  __Pyx_INCREF(__pyx_n_u_rb);
-  __Pyx_GIVEREF(__pyx_n_u_rb);
-  PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_n_u_rb);
-  __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_2)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_2);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_contig_idx = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "index.pyx":46
- *     def load_contig(self, contig_name):
- *         contig_idx = pickle.load(open(self.dir+'/'+contig_name+".pkl", "rb"))
- *         return contig_idx             # <<<<<<<<<<<<<<
- * 
- *     def prepare_disk(self):
- */
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_contig_idx);
-  __pyx_r = __pyx_v_contig_idx;
-  goto __pyx_L0;
-
-  /* "index.pyx":44
- *             return contig_idx[kmer]
- * 
- *     def load_contig(self, contig_name):             # <<<<<<<<<<<<<<
- *         contig_idx = pickle.load(open(self.dir+'/'+contig_name+".pkl", "rb"))
- *         return contig_idx
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("index.InvertedIndex.load_contig", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_contig_idx);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "index.pyx":48
- *         return contig_idx
- * 
  *     def prepare_disk(self):             # <<<<<<<<<<<<<<
  *         basename = os.path.basename(self.ref_path)
  *         disk_name = os.path.splitext(basename)[0]+"_idx"
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5index_13InvertedIndex_9prepare_disk(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static PyMethodDef __pyx_mdef_5index_13InvertedIndex_9prepare_disk = {"prepare_disk", (PyCFunction)__pyx_pw_5index_13InvertedIndex_9prepare_disk, METH_O, 0};
-static PyObject *__pyx_pw_5index_13InvertedIndex_9prepare_disk(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5index_13InvertedIndex_7prepare_disk(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static PyMethodDef __pyx_mdef_5index_13InvertedIndex_7prepare_disk = {"prepare_disk", (PyCFunction)__pyx_pw_5index_13InvertedIndex_7prepare_disk, METH_O, 0};
+static PyObject *__pyx_pw_5index_13InvertedIndex_7prepare_disk(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("prepare_disk (wrapper)", 0);
-  __pyx_r = __pyx_pf_5index_13InvertedIndex_8prepare_disk(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5index_13InvertedIndex_6prepare_disk(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_5index_13InvertedIndex_6prepare_disk(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_v_basename = NULL;
   PyObject *__pyx_v_disk_name = NULL;
   PyObject *__pyx_v_meta = NULL;
@@ -2726,22 +2504,22 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("prepare_disk", 0);
 
-  /* "index.pyx":49
+  /* "index.pyx":45
  * 
  *     def prepare_disk(self):
  *         basename = os.path.basename(self.ref_path)             # <<<<<<<<<<<<<<
  *         disk_name = os.path.splitext(basename)[0]+"_idx"
  *         os.mkdir(disk_name)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_basename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_basename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ref_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ref_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2756,25 +2534,25 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_basename = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "index.pyx":50
+  /* "index.pyx":46
  *     def prepare_disk(self):
  *         basename = os.path.basename(self.ref_path)
  *         disk_name = os.path.splitext(basename)[0]+"_idx"             # <<<<<<<<<<<<<<
  *         os.mkdir(disk_name)
  *         self.dir = disk_name
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_splitext); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_splitext); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -2789,28 +2567,28 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_basename) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_basename);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_n_u_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_n_u_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_disk_name = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "index.pyx":51
+  /* "index.pyx":47
  *         basename = os.path.basename(self.ref_path)
  *         disk_name = os.path.splitext(basename)[0]+"_idx"
  *         os.mkdir(disk_name)             # <<<<<<<<<<<<<<
  *         self.dir = disk_name
  *         meta = [self.ref_path, self.k, self.dir]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_os); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_mkdir); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_mkdir); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -2825,34 +2603,34 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_disk_name) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_disk_name);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "index.pyx":52
+  /* "index.pyx":48
  *         disk_name = os.path.splitext(basename)[0]+"_idx"
  *         os.mkdir(disk_name)
  *         self.dir = disk_name             # <<<<<<<<<<<<<<
  *         meta = [self.ref_path, self.k, self.dir]
  *         pickle.dump(meta, open(disk_name+"/"+"meta_info", 'wb'))
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_dir, __pyx_v_disk_name) < 0) __PYX_ERR(0, 52, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_dir, __pyx_v_disk_name) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
 
-  /* "index.pyx":53
+  /* "index.pyx":49
  *         os.mkdir(disk_name)
  *         self.dir = disk_name
  *         meta = [self.ref_path, self.k, self.dir]             # <<<<<<<<<<<<<<
  *         pickle.dump(meta, open(disk_name+"/"+"meta_info", 'wb'))
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ref_path); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ref_path); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_k); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_k); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dir); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dir); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyList_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -2866,24 +2644,24 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
   __pyx_v_meta = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "index.pyx":54
+  /* "index.pyx":50
  *         self.dir = disk_name
  *         meta = [self.ref_path, self.k, self.dir]
  *         pickle.dump(meta, open(disk_name+"/"+"meta_info", 'wb'))             # <<<<<<<<<<<<<<
  * 
  *     def persist(self, ref_name, cntg_idx):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pickle); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pickle); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_dump); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_dump); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_v_disk_name, __pyx_kp_u_); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_v_disk_name, __pyx_kp_u_); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_n_u_meta_info); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_n_u_meta_info); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -2891,7 +2669,7 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
   __Pyx_GIVEREF(__pyx_n_u_wb);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_n_u_wb);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -2909,7 +2687,7 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_meta, __pyx_t_1};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2918,14 +2696,14 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_meta, __pyx_t_1};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -2936,15 +2714,15 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "index.pyx":48
- *         return contig_idx
+  /* "index.pyx":44
+ *             return contig_idx[kmer]
  * 
  *     def prepare_disk(self):             # <<<<<<<<<<<<<<
  *         basename = os.path.basename(self.ref_path)
@@ -2971,7 +2749,7 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "index.pyx":56
+/* "index.pyx":52
  *         pickle.dump(meta, open(disk_name+"/"+"meta_info", 'wb'))
  * 
  *     def persist(self, ref_name, cntg_idx):             # <<<<<<<<<<<<<<
@@ -2980,9 +2758,9 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_8prepare_disk(CYTHON_UNUSED PyO
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5index_13InvertedIndex_11persist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_5index_13InvertedIndex_11persist = {"persist", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5index_13InvertedIndex_11persist, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5index_13InvertedIndex_11persist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5index_13InvertedIndex_9persist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_5index_13InvertedIndex_9persist = {"persist", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5index_13InvertedIndex_9persist, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_5index_13InvertedIndex_9persist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_ref_name = 0;
   PyObject *__pyx_v_cntg_idx = 0;
@@ -3017,17 +2795,17 @@ static PyObject *__pyx_pw_5index_13InvertedIndex_11persist(PyObject *__pyx_self,
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ref_name)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("persist", 1, 3, 3, 1); __PYX_ERR(0, 56, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("persist", 1, 3, 3, 1); __PYX_ERR(0, 52, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_cntg_idx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("persist", 1, 3, 3, 2); __PYX_ERR(0, 56, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("persist", 1, 3, 3, 2); __PYX_ERR(0, 52, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "persist") < 0)) __PYX_ERR(0, 56, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "persist") < 0)) __PYX_ERR(0, 52, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -3042,20 +2820,20 @@ static PyObject *__pyx_pw_5index_13InvertedIndex_11persist(PyObject *__pyx_self,
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("persist", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 56, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("persist", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 52, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("index.InvertedIndex.persist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5index_13InvertedIndex_10persist(__pyx_self, __pyx_v_self, __pyx_v_ref_name, __pyx_v_cntg_idx);
+  __pyx_r = __pyx_pf_5index_13InvertedIndex_8persist(__pyx_self, __pyx_v_self, __pyx_v_ref_name, __pyx_v_cntg_idx);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5index_13InvertedIndex_10persist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ref_name, PyObject *__pyx_v_cntg_idx) {
+static PyObject *__pyx_pf_5index_13InvertedIndex_8persist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ref_name, PyObject *__pyx_v_cntg_idx) {
   PyObject *__pyx_v_basename = NULL;
   PyObject *__pyx_v_disk_name = NULL;
   PyObject *__pyx_r = NULL;
@@ -3071,7 +2849,7 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_10persist(CYTHON_UNUSED PyObjec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("persist", 0);
 
-  /* "index.pyx":57
+  /* "index.pyx":53
  * 
  *     def persist(self, ref_name, cntg_idx):
  *         basename = ref_name             # <<<<<<<<<<<<<<
@@ -3081,39 +2859,39 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_10persist(CYTHON_UNUSED PyObjec
   __Pyx_INCREF(__pyx_v_ref_name);
   __pyx_v_basename = __pyx_v_ref_name;
 
-  /* "index.pyx":58
+  /* "index.pyx":54
  *     def persist(self, ref_name, cntg_idx):
  *         basename = ref_name
  *         disk_name = self.dir+"/"+basename+".pkl"             # <<<<<<<<<<<<<<
  *         pickle.dump(cntg_idx, open(disk_name, 'wb'))
  *         print("\nIndex for {} written to disk".format(ref_name))
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dir); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dir); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_kp_u_); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_kp_u_); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_basename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_v_basename); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_kp_u_pkl); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_kp_u_pkl); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_disk_name = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "index.pyx":59
+  /* "index.pyx":55
  *         basename = ref_name
  *         disk_name = self.dir+"/"+basename+".pkl"
  *         pickle.dump(cntg_idx, open(disk_name, 'wb'))             # <<<<<<<<<<<<<<
  *         print("\nIndex for {} written to disk".format(ref_name))
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pickle); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pickle); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_dump); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_dump); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_disk_name);
   __Pyx_GIVEREF(__pyx_v_disk_name);
@@ -3121,7 +2899,7 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_10persist(CYTHON_UNUSED PyObjec
   __Pyx_INCREF(__pyx_n_u_wb);
   __Pyx_GIVEREF(__pyx_n_u_wb);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_wb);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -3139,7 +2917,7 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_10persist(CYTHON_UNUSED PyObjec
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_cntg_idx, __pyx_t_4};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3148,14 +2926,14 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_10persist(CYTHON_UNUSED PyObjec
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_cntg_idx, __pyx_t_4};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_1) {
       __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -3166,19 +2944,19 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_10persist(CYTHON_UNUSED PyObjec
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "index.pyx":60
+  /* "index.pyx":56
  *         disk_name = self.dir+"/"+basename+".pkl"
  *         pickle.dump(cntg_idx, open(disk_name, 'wb'))
  *         print("\nIndex for {} written to disk".format(ref_name))             # <<<<<<<<<<<<<<
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Index_for_written_to_disk, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Index_for_written_to_disk, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -3192,15 +2970,15 @@ static PyObject *__pyx_pf_5index_13InvertedIndex_10persist(CYTHON_UNUSED PyObjec
   }
   __pyx_t_2 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_6, __pyx_v_ref_name) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_ref_name);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "index.pyx":56
+  /* "index.pyx":52
  *         pickle.dump(meta, open(disk_name+"/"+"meta_info", 'wb'))
  * 
  *     def persist(self, ref_name, cntg_idx):             # <<<<<<<<<<<<<<
@@ -3282,7 +3060,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_InvertedIndex, __pyx_k_InvertedIndex, sizeof(__pyx_k_InvertedIndex), 0, 0, 1, 1},
   {&__pyx_n_s_InvertedIndex___init, __pyx_k_InvertedIndex___init, sizeof(__pyx_k_InvertedIndex___init), 0, 0, 1, 1},
   {&__pyx_n_s_InvertedIndex_build, __pyx_k_InvertedIndex_build, sizeof(__pyx_k_InvertedIndex_build), 0, 0, 1, 1},
-  {&__pyx_n_s_InvertedIndex_load_contig, __pyx_k_InvertedIndex_load_contig, sizeof(__pyx_k_InvertedIndex_load_contig), 0, 0, 1, 1},
   {&__pyx_n_s_InvertedIndex_persist, __pyx_k_InvertedIndex_persist, sizeof(__pyx_k_InvertedIndex_persist), 0, 0, 1, 1},
   {&__pyx_n_s_InvertedIndex_prepare_disk, __pyx_k_InvertedIndex_prepare_disk, sizeof(__pyx_k_InvertedIndex_prepare_disk), 0, 0, 1, 1},
   {&__pyx_n_s_InvertedIndex_query, __pyx_k_InvertedIndex_query, sizeof(__pyx_k_InvertedIndex_query), 0, 0, 1, 1},
@@ -3295,9 +3072,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_cntg_idx, __pyx_k_cntg_idx, sizeof(__pyx_k_cntg_idx), 0, 0, 1, 1},
   {&__pyx_n_s_collections, __pyx_k_collections, sizeof(__pyx_k_collections), 0, 0, 1, 1},
-  {&__pyx_n_s_contig, __pyx_k_contig, sizeof(__pyx_k_contig), 0, 0, 1, 1},
   {&__pyx_n_s_contig_idx, __pyx_k_contig_idx, sizeof(__pyx_k_contig_idx), 0, 0, 1, 1},
-  {&__pyx_n_s_contig_name, __pyx_k_contig_name, sizeof(__pyx_k_contig_name), 0, 0, 1, 1},
   {&__pyx_n_s_defaultdict, __pyx_k_defaultdict, sizeof(__pyx_k_defaultdict), 0, 0, 1, 1},
   {&__pyx_n_s_dir, __pyx_k_dir, sizeof(__pyx_k_dir), 0, 0, 1, 1},
   {&__pyx_n_s_disk_name, __pyx_k_disk_name, sizeof(__pyx_k_disk_name), 0, 0, 1, 1},
@@ -3317,8 +3092,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
   {&__pyx_n_s_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 0, 1, 1},
   {&__pyx_n_s_kmer, __pyx_k_kmer, sizeof(__pyx_k_kmer), 0, 0, 1, 1},
-  {&__pyx_n_s_load, __pyx_k_load, sizeof(__pyx_k_load), 0, 0, 1, 1},
-  {&__pyx_n_s_load_contig, __pyx_k_load_contig, sizeof(__pyx_k_load_contig), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_meta, __pyx_k_meta, sizeof(__pyx_k_meta), 0, 0, 1, 1},
   {&__pyx_n_u_meta_info, __pyx_k_meta_info, sizeof(__pyx_k_meta_info), 0, 1, 0, 1},
@@ -3341,7 +3114,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_qualname, __pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 0, 1, 1},
   {&__pyx_n_s_query, __pyx_k_query, sizeof(__pyx_k_query), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
-  {&__pyx_n_u_rb, __pyx_k_rb, sizeof(__pyx_k_rb), 0, 1, 0, 1},
   {&__pyx_n_s_record, __pyx_k_record, sizeof(__pyx_k_record), 0, 0, 1, 1},
   {&__pyx_n_s_ref, __pyx_k_ref, sizeof(__pyx_k_ref), 0, 0, 1, 1},
   {&__pyx_n_s_ref_mlen, __pyx_k_ref_mlen, sizeof(__pyx_k_ref_mlen), 0, 0, 1, 1},
@@ -3361,7 +3133,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 25, __pyx_L1_error)
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 29, __pyx_L1_error)
-  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 50, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3398,50 +3170,38 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "index.pyx":39
  *             self.persist(record, contig_idx)
  * 
- *     def query(self, kmer, contig):             # <<<<<<<<<<<<<<
- *         contig_idx = self.load_contig(contig)
+ *     def query(self, kmer, contig_idx):             # <<<<<<<<<<<<<<
+ *         # contig_idx = self.load_contig(contig)
  *         if kmer in contig_idx:
  */
-  __pyx_tuple__6 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_kmer, __pyx_n_s_contig, __pyx_n_s_contig_idx); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_kmer, __pyx_n_s_contig_idx); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_index_pyx, __pyx_n_s_query, 39, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_index_pyx, __pyx_n_s_query, 39, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 39, __pyx_L1_error)
 
   /* "index.pyx":44
  *             return contig_idx[kmer]
- * 
- *     def load_contig(self, contig_name):             # <<<<<<<<<<<<<<
- *         contig_idx = pickle.load(open(self.dir+'/'+contig_name+".pkl", "rb"))
- *         return contig_idx
- */
-  __pyx_tuple__8 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_contig_name, __pyx_n_s_contig_idx); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 44, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__8);
-  __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_index_pyx, __pyx_n_s_load_contig, 44, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 44, __pyx_L1_error)
-
-  /* "index.pyx":48
- *         return contig_idx
  * 
  *     def prepare_disk(self):             # <<<<<<<<<<<<<<
  *         basename = os.path.basename(self.ref_path)
  *         disk_name = os.path.splitext(basename)[0]+"_idx"
  */
-  __pyx_tuple__10 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_basename, __pyx_n_s_disk_name, __pyx_n_s_meta); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 48, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__10);
-  __Pyx_GIVEREF(__pyx_tuple__10);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_index_pyx, __pyx_n_s_prepare_disk, 48, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_basename, __pyx_n_s_disk_name, __pyx_n_s_meta); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_index_pyx, __pyx_n_s_prepare_disk, 44, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 44, __pyx_L1_error)
 
-  /* "index.pyx":56
+  /* "index.pyx":52
  *         pickle.dump(meta, open(disk_name+"/"+"meta_info", 'wb'))
  * 
  *     def persist(self, ref_name, cntg_idx):             # <<<<<<<<<<<<<<
  *         basename = ref_name
  *         disk_name = self.dir+"/"+basename+".pkl"
  */
-  __pyx_tuple__12 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_ref_name, __pyx_n_s_cntg_idx, __pyx_n_s_basename, __pyx_n_s_disk_name); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 56, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__12);
-  __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_index_pyx, __pyx_n_s_persist, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_ref_name, __pyx_n_s_cntg_idx, __pyx_n_s_basename, __pyx_n_s_disk_name); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_index_pyx, __pyx_n_s_persist, 52, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3882,8 +3642,8 @@ if (!__Pyx_RefNanny) {
   /* "index.pyx":39
  *             self.persist(record, contig_idx)
  * 
- *     def query(self, kmer, contig):             # <<<<<<<<<<<<<<
- *         contig_idx = self.load_contig(contig)
+ *     def query(self, kmer, contig_idx):             # <<<<<<<<<<<<<<
+ *         # contig_idx = self.load_contig(contig)
  *         if kmer in contig_idx:
  */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5index_13InvertedIndex_5query, 0, __pyx_n_s_InvertedIndex_query, NULL, __pyx_n_s_index, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
@@ -3894,37 +3654,25 @@ if (!__Pyx_RefNanny) {
   /* "index.pyx":44
  *             return contig_idx[kmer]
  * 
- *     def load_contig(self, contig_name):             # <<<<<<<<<<<<<<
- *         contig_idx = pickle.load(open(self.dir+'/'+contig_name+".pkl", "rb"))
- *         return contig_idx
- */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5index_13InvertedIndex_7load_contig, 0, __pyx_n_s_InvertedIndex_load_contig, NULL, __pyx_n_s_index, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_load_contig, __pyx_t_2) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "index.pyx":48
- *         return contig_idx
- * 
  *     def prepare_disk(self):             # <<<<<<<<<<<<<<
  *         basename = os.path.basename(self.ref_path)
  *         disk_name = os.path.splitext(basename)[0]+"_idx"
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5index_13InvertedIndex_9prepare_disk, 0, __pyx_n_s_InvertedIndex_prepare_disk, NULL, __pyx_n_s_index, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5index_13InvertedIndex_7prepare_disk, 0, __pyx_n_s_InvertedIndex_prepare_disk, NULL, __pyx_n_s_index, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_prepare_disk, __pyx_t_2) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_prepare_disk, __pyx_t_2) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "index.pyx":56
+  /* "index.pyx":52
  *         pickle.dump(meta, open(disk_name+"/"+"meta_info", 'wb'))
  * 
  *     def persist(self, ref_name, cntg_idx):             # <<<<<<<<<<<<<<
  *         basename = ref_name
  *         disk_name = self.dir+"/"+basename+".pkl"
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5index_13InvertedIndex_11persist, 0, __pyx_n_s_InvertedIndex_persist, NULL, __pyx_n_s_index, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5index_13InvertedIndex_9persist, 0, __pyx_n_s_InvertedIndex_persist, NULL, __pyx_n_s_index, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_persist, __pyx_t_2) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_persist, __pyx_t_2) < 0) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "index.pyx":13
