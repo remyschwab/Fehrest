@@ -31,20 +31,18 @@ def load_contig(idx, contig_name):
 
 def seed(partitions, idx):
     """Query the partitions for anchors to the genome"""
-    # seeds = {}
-    seeds = []
+    seeds = {}
     contigs = [os.path.splitext(ctg)[0] for ctg in os.listdir(idx.dir)]
     contigs.remove('meta_info')
     for contig in contigs:
-        # seeds[contig] = set()
+        seeds[contig] = set()
         # Each contig's index is only loaded once
         contig_idx = load_contig(idx, contig)
         for kmer, shift in partitions:
             anchors = idx.query(kmer.encode(), contig_idx)
             if anchors:
                 for anchor in anchors:
-                    # seeds[contig].add(anchor-shift)
-                    seeds.append((contig, anchor-shift))
+                    seeds[contig].add(anchor-shift)
     return seeds
 
 
@@ -145,8 +143,8 @@ if __name__ == "__main__":
         assert len(read.sequence) > INDEX_DUMP[1]
         parts = partition(read.sequence, DISTANCE)
         gseeds = seed(parts, INVERTED_INDEX)
-        #alignment = extend(read.sequence, gseeds, INVERTED_INDEX, DISTANCE)
-        #ALIGNMENTS.append(alignment)
+        alignment = extend(read.sequence, gseeds, INVERTED_INDEX, DISTANCE)
+        ALIGNMENTS.append(alignment)
 
     # Some Summaries
     # summarize_alignments(alignments)
